@@ -15,6 +15,7 @@
 		12B1FA1420E2D2620022598B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12B1FA1220E2D2620022598B /* LaunchScreen.storyboard */; };
 		12B1FA1F20E2D2620022598B /* ToDoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B1FA1E20E2D2620022598B /* ToDoTests.swift */; };
 		12B1FA2A20E2D2630022598B /* ToDoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B1FA2920E2D2630022598B /* ToDoUITests.swift */; };
+		12B1FA3820E2D5730022598B /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B1FA3720E2D5730022598B /* Task.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		12B1FA2520E2D2630022598B /* ToDoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToDoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		12B1FA2920E2D2630022598B /* ToDoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoUITests.swift; sourceTree = "<group>"; };
 		12B1FA2B20E2D2630022598B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		12B1FA3720E2D5730022598B /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				12B1FA0620E2D2620022598B /* AppDelegate.swift */,
 				12B1FA0820E2D2620022598B /* ViewController.swift */,
 				12B1FA0A20E2D2620022598B /* Main.storyboard */,
+				12B1FA3720E2D5730022598B /* Task.swift */,
 				12B1FA1020E2D2620022598B /* Assets.xcassets */,
 				12B1FA1220E2D2620022598B /* LaunchScreen.storyboard */,
 				12B1FA1520E2D2620022598B /* Info.plist */,
@@ -259,6 +262,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				12B1FA3820E2D5730022598B /* Task.swift in Sources */,
 				12B1FA0920E2D2620022598B /* ViewController.swift in Sources */,
 				12B1FA0F20E2D2620022598B /* ToDo.xcdatamodeld in Sources */,
 				12B1FA0720E2D2620022598B /* AppDelegate.swift in Sources */,
