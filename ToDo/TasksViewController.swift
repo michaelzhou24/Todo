@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  TasksViewController.swift
 //  ToDo
 //
 //  Created by Michael Zhou on 2018-06-26.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class TasksViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     var tasks : [Task] = []
     @IBOutlet weak var todoListView: UITableView!
@@ -36,21 +36,21 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func makeTasks() -> [Task] {
-        let task1 = Task()
-        task1.name = "Walk the dog"
-        task1.important = false
-        let task2 = Task()
-        task2.name = "Wash dishes"
-        task2.important = true
-        let task3 = Task()
-        task3.name = "Go to gym"
-        task3.important = true
+        let task1 = Task(name: "Walk the dog", important: false)
+        let task2 = Task(name: "Wash dishes", important: true)
+        let task3 = Task(name: "Go to gym", important: false)
         return [task1, task2, task3]
     }
     
     @IBAction func plusTapped(_ sender: Any) {
         performSegue(withIdentifier: "addSegue", sender: nil)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let nextVC = segue.destination as! NewTaskViewController
+        nextVC.previousVC  = self
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

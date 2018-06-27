@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--New Task View Controller-->
         <scene sceneID="m87-O9-0nh">
             <objects>
-                <viewController id="d5Q-RA-WUE" sceneMemberID="viewController">
+                <viewController id="d5Q-RA-WUE" customClass="NewTaskViewController" customModule="ToDo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VXu-Tw-ZON">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -36,9 +36,12 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nwf-yG-tKd">
                                 <rect key="frame" x="156" y="377" width="63" height="30"/>
                                 <state key="normal" title="Add Task"/>
+                                <connections>
+                                    <action selector="addTaskTapped:" destination="d5Q-RA-WUE" eventType="touchUpInside" id="Ltl-Un-Hc5"/>
+                                </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GcJ-mz-GwR">
-                                <rect key="frame" x="120" y="207" width="135" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="928-oh-4Lv">
+                                <rect key="frame" x="40" y="207" width="295" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -47,19 +50,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="AqE-TI-s8q" firstAttribute="top" secondItem="9X9-VK-w9T" secondAttribute="top" constant="114" id="1Ee-Kl-Md8"/>
-                            <constraint firstItem="hbv-hH-s5S" firstAttribute="top" secondItem="GcJ-mz-GwR" secondAttribute="bottom" constant="62" id="1xr-ZM-7vU"/>
                             <constraint firstItem="Nwf-yG-tKd" firstAttribute="centerX" secondItem="VXu-Tw-ZON" secondAttribute="centerX" id="8eW-bF-oM6"/>
-                            <constraint firstItem="9X9-VK-w9T" firstAttribute="trailing" secondItem="GcJ-mz-GwR" secondAttribute="trailing" constant="120" id="MJf-Wh-MhS"/>
+                            <constraint firstItem="928-oh-4Lv" firstAttribute="leading" secondItem="9X9-VK-w9T" secondAttribute="leading" constant="40" id="8o2-g0-DbH"/>
+                            <constraint firstItem="928-oh-4Lv" firstAttribute="top" secondItem="AqE-TI-s8q" secondAttribute="bottom" constant="30" id="BNS-KX-7mf"/>
                             <constraint firstItem="Nwf-yG-tKd" firstAttribute="leading" secondItem="9X9-VK-w9T" secondAttribute="leading" constant="156" id="OoW-8g-Ihe"/>
                             <constraint firstItem="Kmq-M8-ZJP" firstAttribute="leading" secondItem="hbv-hH-s5S" secondAttribute="trailing" constant="32" id="Orp-Uc-0nF"/>
                             <constraint firstItem="9X9-VK-w9T" firstAttribute="bottom" secondItem="Nwf-yG-tKd" secondAttribute="bottom" constant="260" id="QmD-Yy-MN3"/>
                             <constraint firstItem="9X9-VK-w9T" firstAttribute="trailing" secondItem="Kmq-M8-ZJP" secondAttribute="trailing" constant="112" id="Sri-cZ-BgX"/>
-                            <constraint firstItem="Kmq-M8-ZJP" firstAttribute="top" secondItem="GcJ-mz-GwR" secondAttribute="bottom" constant="57" id="WEW-sc-kHE"/>
-                            <constraint firstItem="GcJ-mz-GwR" firstAttribute="top" secondItem="AqE-TI-s8q" secondAttribute="bottom" constant="8" id="WIc-pM-t6d"/>
                             <constraint firstItem="Nwf-yG-tKd" firstAttribute="top" secondItem="hbv-hH-s5S" secondAttribute="bottom" constant="57" id="Whw-oa-RY8"/>
-                            <constraint firstItem="GcJ-mz-GwR" firstAttribute="top" secondItem="AqE-TI-s8q" secondAttribute="bottom" constant="8" id="a7k-sR-7hX"/>
-                            <constraint firstItem="Kmq-M8-ZJP" firstAttribute="top" secondItem="GcJ-mz-GwR" secondAttribute="bottom" constant="57" id="avU-ZF-a0d"/>
-                            <constraint firstItem="GcJ-mz-GwR" firstAttribute="centerX" secondItem="VXu-Tw-ZON" secondAttribute="centerX" id="chr-el-YJo"/>
                             <constraint firstItem="hbv-hH-s5S" firstAttribute="leading" secondItem="9X9-VK-w9T" secondAttribute="leading" constant="107" id="eKn-Ab-3x1"/>
                             <constraint firstItem="9X9-VK-w9T" firstAttribute="trailing" secondItem="Nwf-yG-tKd" secondAttribute="trailing" constant="156" id="fSR-ez-mOm"/>
                             <constraint firstItem="9X9-VK-w9T" firstAttribute="trailing" secondItem="AqE-TI-s8q" secondAttribute="trailing" constant="167.5" id="gmB-Fe-9Sy"/>
@@ -67,13 +65,16 @@
                             <constraint firstItem="Kmq-M8-ZJP" firstAttribute="leading" secondItem="hbv-hH-s5S" secondAttribute="trailing" constant="32" id="hXa-MN-5KC"/>
                             <constraint firstItem="AqE-TI-s8q" firstAttribute="leading" secondItem="9X9-VK-w9T" secondAttribute="leading" constant="167.5" id="kZm-8G-IWM"/>
                             <constraint firstItem="Nwf-yG-tKd" firstAttribute="top" secondItem="Kmq-M8-ZJP" secondAttribute="bottom" constant="52" id="nlh-Qt-08i"/>
-                            <constraint firstItem="9X9-VK-w9T" firstAttribute="trailing" secondItem="GcJ-mz-GwR" secondAttribute="trailing" constant="120" id="rPR-ru-fuS"/>
-                            <constraint firstItem="GcJ-mz-GwR" firstAttribute="leading" secondItem="9X9-VK-w9T" secondAttribute="leading" constant="120" id="vJe-kJ-Zw0"/>
+                            <constraint firstItem="9X9-VK-w9T" firstAttribute="trailing" secondItem="928-oh-4Lv" secondAttribute="trailing" constant="40" id="q7V-AJ-tWQ"/>
+                            <constraint firstItem="928-oh-4Lv" firstAttribute="centerX" secondItem="VXu-Tw-ZON" secondAttribute="centerX" id="sUW-Bz-g3T"/>
                             <constraint firstItem="AqE-TI-s8q" firstAttribute="centerX" secondItem="VXu-Tw-ZON" secondAttribute="centerX" id="w4L-hI-ADK"/>
-                            <constraint firstItem="GcJ-mz-GwR" firstAttribute="leading" secondItem="9X9-VK-w9T" secondAttribute="leading" constant="120" id="yHd-ez-5iO"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9X9-VK-w9T"/>
                     </view>
+                    <connections>
+                        <outlet property="isImportant" destination="Kmq-M8-ZJP" id="eAV-Uq-LWu"/>
+                        <outlet property="taskName" destination="928-oh-4Lv" id="qtf-DW-ARc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sc0-GN-jsw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -82,7 +83,7 @@
         <!--Do It!-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="BYZ-38-t0r" customClass="ViewController" customModule="ToDo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="BYZ-38-t0r" customClass="TasksViewController" customModule="ToDo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

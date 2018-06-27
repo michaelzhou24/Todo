@@ -12,5 +12,10 @@ class Task {
     var name = ""
     var important = false
     
+    init(name: String, important: Bool) {
+        self.name = name
+        self.important = important
+    }
+ 
     
 }
