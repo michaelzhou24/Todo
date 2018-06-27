@@ -9,7 +9,7 @@
 import UIKit
 
 class TasksViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
+    var selectedTaskIndex = 0
     var tasks : [Task] = []
     @IBOutlet weak var todoListView: UITableView!
     override func viewDidLoad() {
@@ -35,6 +35,12 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedTaskIndex = indexPath.row
+        let task = tasks[selectedTaskIndex]
+        performSegue(withIdentifier: "selectTaskSegue", sender: task)
+    }
+    
     func makeTasks() -> [Task] {
         let task1 = Task(name: "Walk the dog", important: false)
         let task2 = Task(name: "Wash dishes", important: true)
@@ -47,15 +53,23 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let nextVC = segue.destination as! NewTaskViewController
-        nextVC.previousVC  = self
+        if segue.identifier == "selectTaskSegue" {
+            let nextVC = segue.destination as! TaskViewController
+            nextVC.task = sender as! Task
+            nextVC.previousVC  = self
+            nextVC.indexOfTask = selectedTaskIndex
+            
+        } else if segue.identifier == "addSegue" {
+            let nextVC = segue.destination as! NewTaskViewController
+            nextVC.previousVC  = self
+        }
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    
 }
 
