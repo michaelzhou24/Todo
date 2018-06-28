@@ -12,7 +12,6 @@ class NewTaskViewController: UIViewController {
 
     @IBOutlet weak var taskName: UITextField!
     @IBOutlet weak var isImportant: UISwitch!
-    var previousVC = TasksViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,9 +20,11 @@ class NewTaskViewController: UIViewController {
     }
     
     @IBAction func addTaskTapped(_ sender: Any) {
-        let task = Task(name: taskName.text!, important: isImportant.isOn)
-        previousVC.tasks.append(task)
-        previousVC.todoListView.reloadData()
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let task = Task(context: context)
+        task.name = taskName.text
+        task.important = isImportant.isOn
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
         navigationController!.popViewController(animated: true)
     }
     

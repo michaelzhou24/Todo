@@ -14,10 +14,15 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
     @IBOutlet weak var todoListView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        tasks = makeTasks()
         // Do any additional setup after loading the view, typically from a nib.
         todoListView.dataSource = self
         todoListView.delegate = self
+
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        getTasks()
+        todoListView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -28,9 +33,9 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
         let cell = UITableViewCell()
         let task = tasks[indexPath.row]
         if !task.important {
-            cell.textLabel?.text = task.name
+            cell.textLabel?.text = task.name!
         } else {
-            cell.textLabel?.text = "👉 \(task.name)"
+            cell.textLabel?.text = "👉 \(task.name!)"
         }
         return cell
     }
@@ -41,13 +46,6 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
         performSegue(withIdentifier: "selectTaskSegue", sender: task)
     }
     
-    func makeTasks() -> [Task] {
-        let task1 = Task(name: "Walk the dog", important: false)
-        let task2 = Task(name: "Wash dishes", important: true)
-        let task3 = Task(name: "Go to gym", important: false)
-        return [task1, task2, task3]
-    }
-    
     @IBAction func plusTapped(_ sender: Any) {
         performSegue(withIdentifier: "addSegue", sender: nil)
     }
@@ -56,12 +54,15 @@ class TasksViewController: UIViewController, UITableViewDataSource, UITableViewD
         if segue.identifier == "selectTaskSegue" {
             let nextVC = segue.destination as! TaskViewController
             nextVC.task = sender as! Task
-            nextVC.previousVC  = self
-            nextVC.indexOfTask = selectedTaskIndex
-            
-        } else if segue.identifier == "addSegue" {
-            let nextVC = segue.destination as! NewTaskViewController
-            nextVC.previousVC  = self
+        }
+    }
+    
+    func getTasks() {
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        do {
+            tasks = try context.fetch(Task.fetchRequest()) as! [Task]
+        } catch {
+            print("Error")
         }
     }
     

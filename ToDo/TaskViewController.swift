@@ -9,21 +9,21 @@
 import UIKit
 
 class TaskViewController: UIViewController {
-    var task = Task(name: "", important: false)
-    var previousVC = TasksViewController()
-    var indexOfTask = 0
+    var task : Task? = nil
     @IBOutlet weak var taskNameLabel: UILabel!
     @IBAction func completeTapped(_ sender: Any) {
-        previousVC.tasks.remove(at: indexOfTask)
-        previousVC.todoListView.reloadData()
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        context.delete(task!)
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
         navigationController!.popViewController(animated: true)
+        
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        if !task.important {
-            taskNameLabel.text = task.name
+        if !task!.important {
+            taskNameLabel.text = task!.name
         } else {
-            taskNameLabel.text = "👉 \(task.name)"
+            taskNameLabel.text = "👉 \(task!.name!)"
         }
     
     }
